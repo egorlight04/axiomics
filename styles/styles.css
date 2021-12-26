@@ -1,0 +1,104 @@
+/* fonts */
+@font-face {
+    font-family: "Vollkorn";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Vollkorn"), url("../fonts/Vollkorn-Regular.ttf") format("opentype")
+}
+
+@font-face {
+    font-family: "Vollkorn";
+    font-style: normal;
+    font-weight: 700;
+    src: local("Vollkorn"), url("../fonts/Vollkorn-Bold.ttf") format("opentype")
+}
+
+/* vars */
+:root {
+    --basic-black: #323232;
+    --basic-gray: #656565;
+    --basic-light-gray: #D9D9D9;
+    --basic-white: #FFFFFF;
+}
+
+/* body */
+.body {
+    font-family: "Vollkorn";
+    line-height: 24px;
+    color: var(--basic-gray);
+    margin: 0;
+}
+
+/* header */
+.header {
+    position: sticky;
+    background-color: var(--basic-white);
+    border-bottom: 1px solid var(--basic-light-gray);
+}
+
+.header__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 24px;
+}
+
+.header__menu-button {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: none;
+    background-image: url("../images/burger.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header__menu-button:hover {
+    cursor: pointer;
+}
+
+.header__navigation {
+    flex-basis: 100%;
+    margin-top: 24px;
+}
+
+.header__navigation_closed {
+    display: none;
+    transition: 0.5s;
+    height: 0;
+}
+
+/* logo */
+.logo {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--basic-black);
+}
+
+/* navigation */
+.navigation__list {
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    padding: 0;
+}
+
+.navigation__item {
+    text-align: center;
+    list-style-type: none;
+    margin: 12px 0;
+}
+
+.navigation__link {
+    color: var(--basic-gray);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navigation__link_current {
+    color: var(--basic-black);
+}
