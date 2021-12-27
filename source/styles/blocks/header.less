@@ -1,0 +1,39 @@
+.header {
+    position: sticky;
+    background-color: var(--basic-white);
+    border-bottom: 1px solid var(--basic-light-gray);
+
+    &__inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 24px;
+    }
+
+    &__menu-button {
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        border: none;
+        background: none;
+        background-image: url("../images/burger.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    &__menu-button:hover {
+        cursor: pointer;
+    }
+
+    &__navigation {
+        flex-basis: 100%;
+        margin-top: 24px;
+    }
+
+    &__navigation_closed {
+        display: none;
+        transition: 0.5s;
+        height: 0;
+    }
+}
