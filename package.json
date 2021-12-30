@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Hello!\""
+    "start": "gulp"
   },
   "repository": {
     "type": "git",
@@ -17,10 +17,16 @@
   },
   "homepage": "https://github.com/egorlightworks/axiomics#readme",
   "devDependencies": {
+    "browser-sync": "^2.27.7",
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^8.0.0",
     "gulp-less": "^5.0.0",
-    "gulp-sourcemaps": "^3.0.0"
-  }
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-svgo": "^2.2.1",
+    "gulp-ttf2woff": "^1.1.1",
+    "gulp-ttf2woff2": "^4.0.1"
+  },
+  "dependencies": {}
 }

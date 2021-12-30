@@ -79,13 +79,11 @@
   font-family: "Vollkorn";
   font-style: normal;
   font-weight: 400;
-  src: local("Vollkorn"), url("../fonts/Vollkorn-Regular.ttf") format("opentype");
+  src: local("Vollkorn"), url("../fonts/Vollkorn-Regular.woff2") format("woff2"), url("../fonts/Vollkorn-Regular.woff") format("woff");
 }
 @font-face {
   font-family: "Vollkorn";
   font-style: normal;
   font-weight: 700;
-  src: local("Vollkorn"), url("../fonts/Vollkorn-Bold.ttf") format("opentype");
+  src: local("Vollkorn"), url("../fonts/Vollkorn-Bold.woff2") format("woff2") url("../fonts/Vollkorn-Bold.woff") format("woff");
 }
-
-/*# sourceMappingURL=map/styles.min.css.map */

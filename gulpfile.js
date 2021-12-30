@@ -1,49 +1,72 @@
 const gulp = require('gulp');
+const clean = require('gulp-clean');
+const sync = require('browser-sync');
+const svgo = require('gulp-svgo');
+const woff = require('gulp-ttf2woff');
+const woff2 = require('gulp-ttf2woff2');
 const less = require('gulp-less');
 const concat = require('gulp-concat');
-const sourcemaps = require('gulp-sourcemaps');
 
-// compiling pages
+exports.default = gulp.series(cleaner, pages, styles, scripts, images, fonts, watcher);
+
 function pages() {
     return gulp.src('./source/*.html')
         .pipe(gulp.dest('./build'))
+    .pipe(sync.stream())
 }
+exports.pages = pages;
 
-// compiling styles
 function styles() {
     return gulp.src('./source/styles/**/*.less')
-        .pipe(sourcemaps.init())
         .pipe(less())
-        .pipe(concat('styles.min.css'))
-        .pipe(sourcemaps.write('./map'))
+        .pipe(concat('./styles.min.css'))
         .pipe(gulp.dest('./build/styles'))
+        .pipe(sync.stream())
 }
+exports.styles = styles;
 
-// compiling scripts
 function scripts() {
     return gulp.src('./source/scripts/**/*.js')
-        .pipe(sourcemaps.init())
-        .pipe(concat('scripts.min.js'))
-        .pipe(sourcemaps.write('./map'))
+        .pipe(concat('./scripts.min.js'))
         .pipe(gulp.dest('./build/scripts'))
+        .pipe(sync.stream())
 }
-
-// compiling images
-function images() {
-    return gulp.src('./source/images/**/*')
-        .pipe(gulp.dest('./build/images'))
-}
-
-// compiling fonts
-function fonts() {
-    return gulp.src('./source/fonts/**/*')
-        .pipe(gulp.dest('./build/fonts'))
-}
-
-exports.pages = pages;
-exports.styles = styles;
 exports.scripts = scripts;
+
+function images() {
+    return gulp.src('./source/images/*.{png,jpeg,jpg,svg}')
+        .pipe(svgo())
+        .pipe(gulp.dest('./build/images'))
+        .pipe(sync.stream())
+}
 exports.images = images;
+
+function fonts() {
+    return gulp.src('./source/fonts/*.ttf')
+        .pipe(woff())
+        .pipe(gulp.dest('./build/fonts')),
+
+        gulp.src('./source/fonts/*.ttf')
+            .pipe(woff2())
+            .pipe(gulp.dest('./build/fonts'))
+}
 exports.fonts = fonts;
 
-exports.default = gulp.series(pages, styles, scripts, images, fonts);
+function watcher() {
+    sync.init({
+        server: './build',
+        online: true,
+        tunnel: 'axiomics'
+    })
+
+    gulp.watch('./source/*.html', pages)
+    gulp.watch('./source/styles/**/*.less', styles)
+    gulp.watch('./source/images/*.{png,jpeg,jpg,svg}', images)
+}
+exports.watcher = watcher;
+
+function cleaner() {
+    return gulp.src('./build/*')
+        .pipe(clean())
+}
+exports.cleaner = cleaner;
