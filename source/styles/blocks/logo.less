@@ -1,5 +1,11 @@
 .logo {
     font-weight: 700;
     font-size: 18px;
-    color: var(--basic-black);
+    text-decoration: none;
+    color: @black;
+    transition: color 0.1s ease-in-out;
+
+    &:hover, &:focus {
+        color: @gray;
+    }
 }

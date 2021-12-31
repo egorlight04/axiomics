@@ -13,14 +13,20 @@
     }
     
     &__link {
-        color: var(--basic-gray);
+        color: @gray;
         font-size: 16px;
         line-height: 24px;
         font-weight: 700;
         text-decoration: none;
+        transition: color 0.2s;
+
+        &:hover, &:focus {
+            cursor: pointer;
+            color: @black;
+        }
     }
     
     &__link_current {
-        color: var(--basic-black);
+        color: @black;
     }
 }

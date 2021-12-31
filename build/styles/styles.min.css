@@ -1,14 +1,6 @@
-.body {
-  font-family: "Vollkorn";
-  line-height: 24px;
-  color: var(--basic-gray);
-  margin: 0;
-}
-
 .header {
-  position: sticky;
-  background-color: var(--basic-white);
-  border-bottom: 1px solid var(--basic-light-gray);
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #D9D9D9;
 }
 .header__inner {
   display: flex;
@@ -17,35 +9,48 @@
   align-items: center;
   margin: 24px;
 }
-.header__menu-button {
+.header__burger {
   width: 24px;
   height: 24px;
   padding: 0;
-  border: none;
   background: none;
-  background-image: url("../images/burger.svg");
-  background-position: center;
-  background-repeat: no-repeat;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.header__menu-button:hover {
+.header__burger path {
+  transition: d 0.2s, stroke 0.1s;
+}
+.header__burger:hover path,
+.header__burger:focus path {
+  stroke: #656565;
+}
+.header__burger_opened path {
+  d: path('M1 11 L 12 4 L 23 11');
+}
+.header__burger:hover {
   cursor: pointer;
 }
 .header__navigation {
+  display: none;
   flex-basis: 100%;
   margin-top: 24px;
 }
-.header__navigation_closed {
-  display: none;
-  transition: 0.5s;
-  height: 0;
+.header__navigation_opened {
+  display: block;
 }
-
 .logo {
   font-weight: 700;
   font-size: 18px;
-  color: var(--basic-black);
+  text-decoration: none;
+  color: #323232;
+  transition: color 0.1s ease-in-out;
 }
-
+.logo:hover,
+.logo:focus {
+  color: #656565;
+}
 .navigation__list {
   display: flex;
   margin: 0;
@@ -58,23 +63,27 @@
   margin: 12px 0;
 }
 .navigation__link {
-  color: var(--basic-gray);
+  color: #656565;
   font-size: 16px;
   line-height: 24px;
   font-weight: 700;
   text-decoration: none;
+  transition: color 0.2s;
+}
+.navigation__link:hover,
+.navigation__link:focus {
+  cursor: pointer;
+  color: #323232;
 }
 .navigation__link_current {
-  color: var(--basic-black);
+  color: #323232;
 }
-
-:root {
-  --basic-black: #323232;
-  --basic-gray: #656565;
-  --basic-light-gray: #D9D9D9;
-  --basic-white: #FFFFFF;
+.page__body {
+  font-family: "Vollkorn";
+  line-height: 24px;
+  color: #656565;
+  margin: 0;
 }
-
 @font-face {
   font-family: "Vollkorn";
   font-style: normal;

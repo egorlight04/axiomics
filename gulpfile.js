@@ -18,8 +18,8 @@ exports.pages = pages;
 
 function styles() {
     return gulp.src('./source/styles/**/*.less')
+        .pipe(concat('styles.min.less'))
         .pipe(less())
-        .pipe(concat('./styles.min.css'))
         .pipe(gulp.dest('./build/styles'))
         .pipe(sync.stream())
 }
@@ -56,11 +56,13 @@ function watcher() {
     sync.init({
         server: './build',
         online: true,
-        tunnel: 'axiomics'
+        tunnel: 'axiomics',
+        notify: false
     })
 
     gulp.watch('./source/*.html', pages)
     gulp.watch('./source/styles/**/*.less', styles)
+    gulp.watch('./source/scripts/**/*.js', scripts)
     gulp.watch('./source/images/*.{png,jpeg,jpg,svg}', images)
 }
 exports.watcher = watcher;
